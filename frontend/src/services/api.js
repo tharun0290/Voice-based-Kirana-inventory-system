@@ -1,4 +1,4 @@
-const API_BASE = 'https://voice-based-kirana-inventory-backend.onrender.com/api';
+const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 
 export async function fetchHealth() {
   const res = await fetch(`${API_BASE}/health`);

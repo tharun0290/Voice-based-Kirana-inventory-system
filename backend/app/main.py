@@ -59,7 +59,10 @@ app.add_middleware(
 )
 
 # Mount static asset directories
-app.mount("/assets/products", StaticFiles(directory=settings.PRODUCTS_ASSETS_DIR), name="products")
+import os as _os
+if _os.path.isdir(settings.PRODUCTS_ASSETS_DIR):
+    app.mount("/assets/products", StaticFiles(directory=settings.PRODUCTS_ASSETS_DIR), name="products")
+_os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
 app.mount("/assets/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
 
 VOICE_INTENT_SYSTEM_PROMPT = """You are the reasoning brain for an Indian Kirana (grocery) inventory management system.
