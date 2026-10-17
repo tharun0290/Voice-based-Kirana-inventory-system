@@ -1,4 +1,4 @@
-const API_BASE = 'https://kirana-mitra-ai-backend.onrender.com/api';
+const API_BASE = 'https://voice-based-kirana-inventory-backend.onrender.com/api';
 
 export async function fetchHealth() {
   const res = await fetch(`${API_BASE}/health`);
@@ -145,8 +145,8 @@ function speakWithWebSpeech(text, lang = 'te') {
   utterance.pitch = 1.0;
 
   const voices = window.speechSynthesis.getVoices();
-  const matchedVoice = voices.find(v => 
-    v.lang.toLowerCase().includes(lang) || 
+  const matchedVoice = voices.find(v =>
+    v.lang.toLowerCase().includes(lang) ||
     (lang === 'te' && v.name.toLowerCase().includes('telugu')) ||
     (lang === 'hi' && v.name.toLowerCase().includes('hindi'))
   );
